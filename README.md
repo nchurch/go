@@ -4,7 +4,8 @@ Usage
 Input boards like this:
 
 ```clojure
-(def board [[:s :s :s :s :s]
+(def board 
+[[:s :s :s :s :s]
    [:s :s :b :b :s]
    [:s :b :w :w :b]
    [:s :b :w :w :b]
