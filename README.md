@@ -41,6 +41,4 @@ Take a look at the code for alive or dead to see core.logic in action.
 Issues
 ---- 
 
-For some reason, boards are generated differently by alive and dead.  For getting all the "live" boards for e.g. :b, you will see b's and spaces; in all the "variable" positions you can substitute either :b, :w, or :s to get any valid board from this template.  But for dead boards, you will see e.g. :b and :n, which if you look at the raw make-boards indicates nil.  For :n, you should read that the piece is whatever the opposite color of the piece in question would be.
-
-Also, the code uses mutual recursion; presumably for this reason, large boards do not work.  The current limit seems to be 15X15.
+Large boards do not work.  The current limit seems to be 15X15.

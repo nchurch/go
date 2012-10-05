@@ -33,10 +33,10 @@
 (defn color [piece board]
   ((board (piece 1)) (piece 0)))
 
-(defn opposite [pcolor]
-  (cond
-    (= pcolor :b) :w
-    (= pcolor :w) :b))
+(defn opposito [pcolor out]
+  (conde
+    [(== pcolor :b)(== out :w)]
+    [(== pcolor :w)(== out :b)]))
 
 ;A piece is alive if there is a rectilinear path
 ;to a space from it; there is a rectilinear path
@@ -54,7 +54,7 @@
                     :else (conde 
                             [(== (color piece board) :s) s#]
                             [(== (color piece board) pcolor) (r-alive pcolor piece board visited)]
-                            [(== (color piece board) (opposite pcolor)) u#])))
+                            [(fresh [opp] (opposito pcolor opp)(== (color piece board) opp)) u#])))
             (r-alive [pcolor piece board visited]
                      (let
                        [visited (conj visited piece)]
@@ -80,7 +80,7 @@
                     :else (conde 
                             [(== (color piece board) :s) u#]
                             [(== (color piece board) pcolor) (r-dead pcolor piece board visited)]
-                            [(== (color piece board) (opposite pcolor)) s#])))
+                            [(fresh [opp] (opposito pcolor opp) (== (color piece board) opp)) s#])))
             (r-dead [pcolor piece board visited]
                      (let
                        [visited (conj visited piece)]
