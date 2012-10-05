@@ -41,4 +41,4 @@ Take a look at the code for alive or dead to see core.logic in action.
 Issues
 ---- 
 
-Large boards do not work.  The current limit seems to be 15X15.
+Generating large boards does not work.  Since you cannot create a function with more than 256 arguments, you cannot generate a board with more than 256 variables.
