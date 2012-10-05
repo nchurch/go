@@ -26,9 +26,9 @@
   [x, (inc y)])
 
 (defn edge? [[x y] board]
-  (if (or 
-        (or (< x 0) (>= x (count (board 0))))
-        (or (< y 0) (>= y (count board)))) true false))
+  (or 
+    (or (< x 0) (>= x (count (board 0))))
+    (or (< y 0) (>= y (count board)))))
   
 (defn color [piece board]
   ((board (piece 1)) (piece 0)))
