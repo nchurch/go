@@ -66,7 +66,7 @@
       (r-alive (color piece board) piece board #{})))
 
 ;a piece is dead if all possible rectilinear paths from it end "blocked": either at an edge
-;or a piece of the other color.  This is true if either the piece is completely surrounded
+;or a piece of the other color.  This is true either: if the piece is completely surrounded
 ;on all four corners by edges or the other color; or if for each of the adjacent pieces of its own color
 ;all possible rectilinear paths end blocked.
 
