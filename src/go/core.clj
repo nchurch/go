@@ -148,6 +148,7 @@
                     (str (color [x y] board) " " "f"))))))
   ([board](test-all-pieces board alive?)))
 
+;indexing madness; must fix
 (defmacro make-boards 
   "generate first Num boards of dimension Dims for which piece of color Pcolor is Lfun at Index.  
    Pcolor should be either :b or :w; lfun should be either alive or dead, NOT the predicates"
@@ -156,12 +157,12 @@
         (for [x (range 0 (dims 0))
               y (range 0 (dims 1))]
           (symbolize [x y]))
-        board (tablefy (dims 0) 
+        board (tablefy (dims 1) 
                        positions)]
-    `(map #(tablefy ~(dims 0) %) 
+    `(map #(tablefy ~(dims 1) %) 
           (run ~num [q#]
                 (fresh [~@positions]
-                       (== ~(symbolize index) ~pcolor)
+                       (== ~(symbolize [(index 1)(index 0)]) ~pcolor)
                        (~lfun ~index ~board)
                        (== q# [~@positions]))))))
 
